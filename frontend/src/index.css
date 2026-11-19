@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-slate-100 text-slate-900 dark:bg-navy-950 dark:text-slate-100;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.card {
+  @apply bg-white dark:bg-navy-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white
+         hover:bg-brand-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 px-4 py-2
+         text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors;
+}
+
+.input {
+  @apply w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-navy-900
+         px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500;
+}
+
+.label {
+  @apply block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1;
+}
+
+.th {
+  @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400;
+}
+
+.td {
+  @apply px-4 py-3 text-sm;
+}
+
+/* ---------- Search bar ---------- */
+.search-wrap {
+  @apply relative w-full max-w-md;
+}
+
+.search-icon {
+  @apply pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400
+         dark:text-slate-500 transition-colors;
+}
+
+.search-wrap:focus-within .search-icon {
+  @apply text-brand-500 dark:text-brand-400;
+}
+
+.search-input {
+  @apply w-full rounded-full border border-slate-200 bg-white py-2.5 pl-10 pr-10 text-sm
+         text-slate-900 placeholder:text-slate-400 shadow-sm transition
+         focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15
+         dark:border-slate-700 dark:bg-navy-900 dark:text-slate-100 dark:placeholder:text-slate-500
+         dark:focus:border-brand-400 dark:focus:ring-brand-400/20;
+}
+
+.search-clear {
+  @apply absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-slate-400
+         hover:bg-slate-100 hover:text-slate-600
+         dark:hover:bg-slate-800 dark:hover:text-slate-200 transition-colors;
+}
+
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; }
+  .no-print { display: none !important; }
+}
