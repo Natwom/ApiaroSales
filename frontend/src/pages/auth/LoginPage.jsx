@@ -98,7 +98,7 @@ export default function LoginPage() {
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} noValidate
-            className="card !bg-navy-900 !border-navy-800 p-6 space-y-4">
+            className="rounded-2xl border border-navy-800 bg-navy-900 p-6 space-y-5 shadow-xl shadow-black/20">
             {error && (
               <div role="alert" className="rounded-lg bg-red-900/40 border border-red-800 text-red-300 px-3 py-2 text-sm">
                 {error}
@@ -106,41 +106,43 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label className="label !text-slate-400">Email</label>
-              <div className="relative">
-                <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                <input type="email" autoComplete="username"
-                  className="input !bg-navy-950 !border-navy-800 !text-slate-100 pl-9"
+              <label htmlFor="email" className="block text-xs font-medium text-slate-400 mb-1.5">Email</label>
+              <div className="auth-field">
+                <Mail size={17} className="auth-icon" />
+                <input id="email" type="email" autoComplete="username"
+                  className="auth-input"
                   placeholder="you@apiaro.co.ke" {...register('email')} />
               </div>
-              {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>}
+              {errors.email && <p className="text-xs text-red-400 mt-1.5">{errors.email.message}</p>}
             </div>
 
             <div>
-              <label className="label !text-slate-400">Password</label>
-              <div className="relative">
-                <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                <input type={show ? 'text' : 'password'} autoComplete="current-password"
-                  className="input !bg-navy-950 !border-navy-800 !text-slate-100 pl-9 pr-10"
-                  placeholder="••••••••"
+              <label htmlFor="password" className="block text-xs font-medium text-slate-400 mb-1.5">Password</label>
+              <div className="auth-field">
+                <Lock size={17} className="auth-icon" />
+                <input id="password" type={show ? 'text' : 'password'} autoComplete="current-password"
+                  className="auth-input"
+                  placeholder="Enter your password"
                   onKeyUp={(e) => setCaps(e.getModifierState?.('CapsLock') ?? false)}
                   {...register('password')} />
                 <button type="button" onClick={() => setShow((s) => !s)}
                   aria-label={show ? 'Hide password' : 'Show password'}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300">
-                  {show ? <EyeOff size={16} /> : <Eye size={16} />}
+                  className="auth-toggle">
+                  {show ? <EyeOff size={17} /> : <Eye size={17} />}
                 </button>
               </div>
-              {caps && <p className="text-xs text-amber-400 mt-1">Caps Lock is on.</p>}
-              {errors.password && <p className="text-xs text-red-400 mt-1">{errors.password.message}</p>}
+              {caps && <p className="text-xs text-amber-400 mt-1.5">Caps Lock is on.</p>}
+              {errors.password && <p className="text-xs text-red-400 mt-1.5">{errors.password.message}</p>}
             </div>
 
-            <label className="flex items-center gap-2 text-xs text-slate-400 select-none">
-              <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+            <label className="flex items-center gap-2 text-xs text-slate-400 select-none cursor-pointer">
+              <input type="checkbox" className="h-3.5 w-3.5 rounded accent-brand-500"
+                checked={remember} onChange={(e) => setRemember(e.target.checked)} />
               Remember my email on this device
             </label>
 
-            <button type="submit" disabled={isSubmitting} className="btn-primary w-full justify-center !py-2.5">
+            <button type="submit" disabled={isSubmitting}
+              className="btn-primary w-full justify-center !py-3 !rounded-xl">
               {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
               {isSubmitting ? 'Signing in…' : 'Sign In'}
             </button>

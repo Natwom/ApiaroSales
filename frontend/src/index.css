@@ -79,3 +79,84 @@ body {
   .print-area { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; }
   .no-print { display: none !important; }
 }
+
+/* ---------- Auth form fields (login page) ---------- */
+.auth-field {
+  position: relative;
+}
+
+.auth-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 1;
+  color: #64748b;
+  transition: color 0.15s ease;
+}
+
+.auth-field:focus-within .auth-icon {
+  color: #4fa8b5;
+}
+
+.auth-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  height: 46px;
+  padding: 0 44px 0 44px;
+  border-radius: 12px;
+  border: 1px solid #1c3144;
+  background: #060d14;
+  color: #f1f5f9;
+  font-size: 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-input::placeholder {
+  color: #64748b;
+}
+
+.auth-input:hover {
+  border-color: #2a4660;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #4fa8b5;
+  box-shadow: 0 0 0 4px rgba(79, 168, 181, 0.18);
+}
+
+/* Stop browsers painting a white/yellow box over autofilled fields */
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover,
+.auth-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f1f5f9;
+  caret-color: #f1f5f9;
+  -webkit-box-shadow: 0 0 0 1000px #060d14 inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Hide Edge's built-in password eye (we have our own) */
+.auth-input::-ms-reveal,
+.auth-input::-ms-clear {
+  display: none;
+}
+
+.auth-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  padding: 6px;
+  border-radius: 8px;
+  color: #64748b;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.auth-toggle:hover {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.06);
+}
